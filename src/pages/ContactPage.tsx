@@ -4,14 +4,29 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactPage = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message sent! We'll get back to you shortly.");
-    setForm({ name: "", email: "", phone: "", service: "", message: "" });
+    setSubmitting(true);
+    const { error } = await supabase.from("messages").insert({
+      name: form.name,
+      email: form.email,
+      phone: form.phone || null,
+      service: form.service || null,
+      message: form.message,
+    });
+    if (error) {
+      toast.error("Failed to send message. Please try again.");
+    } else {
+      toast.success("Message sent! We'll get back to you shortly.");
+      setForm({ name: "", email: "", phone: "", service: "", message: "" });
+    }
+    setSubmitting(false);
   };
 
   return (
@@ -44,8 +59,8 @@ const ContactPage = () => {
                 <option>Web Development</option>
               </select>
               <Textarea placeholder="Your Message" rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required />
-              <Button type="submit" size="lg" className="w-full">
-                <Send className="mr-2" size={18} /> Send Message
+              <Button type="submit" size="lg" className="w-full" disabled={submitting}>
+                <Send className="mr-2" size={18} /> {submitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>
@@ -88,7 +103,6 @@ const ContactPage = () => {
               </a>
             </Button>
 
-            {/* Booking Form */}
             <div className="bg-muted/50 rounded-xl p-6 border border-border">
               <h3 className="font-display font-semibold mb-3">Book an Installation</h3>
               <p className="text-sm text-muted-foreground mb-4">Schedule a site visit for installation or consultation.</p>
