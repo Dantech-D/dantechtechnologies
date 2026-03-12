@@ -16,10 +16,10 @@ const AboutPage = () => (
           <h2 className="font-display text-3xl font-bold mb-6">Who We Are</h2>
           <div className="space-y-4 text-muted-foreground">
             <p>
-              Dantech Technologies is a leading IT solutions provider based in Nairobi, Kenya. With over 8 years of experience, we specialize in CCTV installation, network infrastructure, MikroTik configuration, internet troubleshooting, and web development.
+              Dantech Technologies is a growing IT solutions provider based in Nairobi, Kenya. With over 3 years of hands-on experience, we specialize in CCTV installation, network infrastructure, MikroTik configuration, internet troubleshooting, and web development.
             </p>
             <p>
-              Our team of certified professionals is committed to delivering high-quality, reliable IT solutions that help businesses grow and stay secure. We work with trusted brands like Hikvision, Dahua, MikroTik, and Ubiquiti to ensure our clients get the best technology available.
+              Our team of skilled professionals is committed to delivering high-quality, reliable IT solutions that help businesses grow and stay secure. We work with trusted brands like Hikvision, Dahua, MikroTik, and Ubiquiti to ensure our clients get the best technology available.
             </p>
             <p>
               From small businesses to large enterprises, we tailor our solutions to meet each client's unique requirements and budget.

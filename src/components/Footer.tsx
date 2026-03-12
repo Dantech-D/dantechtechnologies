@@ -32,7 +32,7 @@ const Footer = () => (
         <div>
           <h4 className="font-display font-semibold mb-4">Contact</h4>
           <div className="flex flex-col gap-3 text-sm opacity-80">
-            <span className="flex items-center gap-2"><Phone size={14} /> +254 700 000 000</span>
+            <span className="flex items-center gap-2"><Phone size={14} /> +254 727 849 984</span>
             <span className="flex items-center gap-2"><Mail size={14} /> info@dantech.co.ke</span>
             <span className="flex items-center gap-2"><MapPin size={14} /> Nairobi, Kenya</span>
           </div>
