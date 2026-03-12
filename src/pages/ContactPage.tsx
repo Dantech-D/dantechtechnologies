@@ -74,7 +74,7 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold mb-1">Phone</h3>
-                  <p className="text-muted-foreground text-sm">+254 700 000 000</p>
+                  <p className="text-muted-foreground text-sm">+254 727 849 984</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -98,7 +98,7 @@ const ContactPage = () => {
             </div>
 
             <Button asChild size="lg" className="w-full bg-[hsl(142,70%,45%)] hover:bg-[hsl(142,70%,40%)]">
-              <a href="https://wa.me/254700000000" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/254727849984" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2" size={20} /> Chat on WhatsApp
               </a>
             </Button>
@@ -107,7 +107,7 @@ const ContactPage = () => {
               <h3 className="font-display font-semibold mb-3">Book an Installation</h3>
               <p className="text-sm text-muted-foreground mb-4">Schedule a site visit for installation or consultation.</p>
               <Button asChild variant="outline" className="w-full">
-                <a href="https://wa.me/254700000000?text=I'd%20like%20to%20book%20an%20installation" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/254727849984?text=I'd%20like%20to%20book%20an%20installation" target="_blank" rel="noopener noreferrer">
                   Book via WhatsApp
                 </a>
               </Button>

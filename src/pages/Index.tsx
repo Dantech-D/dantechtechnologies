@@ -64,7 +64,7 @@ const Index = () => {
           {[
             ["500+", "Projects Completed"],
             ["200+", "Happy Clients"],
-            ["8+", "Years Experience"],
+            ["3+", "Years Experience"],
             ["24/7", "Support Available"],
           ].map(([num, label]) => (
             <div key={label}>
@@ -137,7 +137,7 @@ const Index = () => {
               <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">Why Choose Dantech?</h2>
               <div className="space-y-4">
                 {[
-                  "Certified IT professionals with 8+ years experience",
+                  "Certified IT professionals with 3+ years experience",
                   "Fast turnaround and 24/7 support",
                   "Competitive pricing with no hidden costs",
                   "Quality equipment from trusted brands",
@@ -156,7 +156,7 @@ const Index = () => {
             <div className="relative">
               <img src={projectNetwork} alt="Our work" className="rounded-xl shadow-[var(--card-shadow)]" />
               <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground rounded-xl p-6 shadow-lg">
-                <div className="font-display text-3xl font-bold">8+</div>
+                <div className="font-display text-3xl font-bold">3+</div>
                 <div className="text-sm opacity-90">Years of Excellence</div>
               </div>
             </div>
@@ -199,7 +199,7 @@ const Index = () => {
               <Link to="/contact">Contact Us</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <a href="https://wa.me/254700000000" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+              <a href="https://wa.me/254727849984" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
             </Button>
           </div>
         </div>
