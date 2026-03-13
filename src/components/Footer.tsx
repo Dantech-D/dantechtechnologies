@@ -39,7 +39,7 @@ const Footer = () => (
         </div>
       </div>
       <div className="border-t border-primary-foreground/20 mt-10 pt-6 text-center text-sm opacity-60">
-        © {new Date().getFullYear()} Dantech Technologies. All rights reserved.
+        © Dantech@2026. All rights reserved.
       </div>
     </div>
   </footer>
