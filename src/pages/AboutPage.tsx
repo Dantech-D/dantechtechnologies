@@ -1,5 +1,6 @@
-import { CheckCircle, Users, Award, Clock, User, Handshake } from "lucide-react";
+import { CheckCircle, Users, Award, Clock, Handshake } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import danielPhoto from "@/assets/daniel-mokaya.jpg";
 
 const AboutPage = () => (
   <div>
