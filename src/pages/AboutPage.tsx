@@ -57,8 +57,8 @@ const AboutPage = () => (
       <div className="container mx-auto px-4">
         <h2 className="font-display text-3xl font-bold text-center mb-12">Leadership</h2>
         <div className="max-w-md mx-auto text-center">
-          <div className="w-32 h-32 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6 border-4 border-primary/20">
-            <User className="text-primary" size={56} />
+          <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 border-4 border-primary/20">
+            <img src={danielPhoto} alt="Daniel Mokaya" className="w-full h-full object-cover" />
           </div>
           <h3 className="font-display text-xl font-bold">Daniel Mokaya</h3>
           <p className="text-primary font-medium mb-3">Co-Founder & IT Solutions Lead</p>
