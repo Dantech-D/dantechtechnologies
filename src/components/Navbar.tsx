@@ -21,7 +21,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Dantech Technologies" className="h-10 w-10" />
+          <img src={logo} alt="Dantech Technologies" className="h-14 w-14" />
           <span className="font-display font-bold text-lg text-foreground">
             Dantech<span className="text-primary"> Technologies</span>
           </span>
