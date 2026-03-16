@@ -1,9 +1,16 @@
+import { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
+const CATEGORIES = ["All", "CCTV & Cameras", "Networking", "Storage & Power", "Software & Licenses"];
 
 const ShopPage = () => {
+  const [search, setSearch] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
+
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
@@ -12,6 +19,14 @@ const ShopPage = () => {
       return data;
     },
   });
+
+  const filtered = useMemo(() => {
+    return products.filter((p) => {
+      const matchesSearch = !search || p.name.toLowerCase().includes(search.toLowerCase()) || (p.description?.toLowerCase().includes(search.toLowerCase()));
+      const matchesCategory = activeCategory === "All" || p.category === activeCategory;
+      return matchesSearch && matchesCategory;
+    });
+  }, [products, search, activeCategory]);
 
   return (
     <div>
@@ -24,6 +39,31 @@ const ShopPage = () => {
 
       <section className="py-20">
         <div className="container mx-auto px-4">
+          {/* Search & Filters */}
+          <div className="mb-8 space-y-4">
+            <div className="relative max-w-md mx-auto">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
+              <Input
+                placeholder="Search products..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="pl-10"
+              />
+            </div>
+            <div className="flex flex-wrap justify-center gap-2">
+              {CATEGORIES.map((cat) => (
+                <Button
+                  key={cat}
+                  size="sm"
+                  variant={activeCategory === cat ? "default" : "outline"}
+                  onClick={() => setActiveCategory(cat)}
+                >
+                  {cat}
+                </Button>
+              ))}
+            </div>
+          </div>
+
           {isLoading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[1, 2, 3, 4].map((i) => (
@@ -35,11 +75,13 @@ const ShopPage = () => {
                 </div>
               ))}
             </div>
-          ) : products.length === 0 ? (
-            <p className="text-center text-muted-foreground">No products yet. Check back soon!</p>
+          ) : filtered.length === 0 ? (
+            <p className="text-center text-muted-foreground">
+              {search || activeCategory !== "All" ? "No products match your search." : "No products yet. Check back soon!"}
+            </p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {products.map((p) => (
+              {filtered.map((p) => (
                 <div key={p.id} className="group rounded-xl bg-card border border-border p-5 hover:border-primary/30 hover:shadow-[var(--card-shadow-hover)] transition-all duration-300 flex flex-col">
                   <div className="aspect-square rounded-lg bg-muted flex items-center justify-center mb-4 overflow-hidden">
                     {p.image_url ? (
