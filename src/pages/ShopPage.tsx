@@ -80,29 +80,29 @@ const ShopPage = () => {
               {search || activeCategory !== "All" ? "No products match your search." : "No products yet. Check back soon!"}
             </p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
               {filtered.map((p) => (
-                <div key={p.id} className="group rounded-xl bg-card border border-border p-5 hover:border-primary/30 hover:shadow-[var(--card-shadow-hover)] transition-all duration-300 flex flex-col">
-                  <div className="aspect-square rounded-lg bg-muted flex items-center justify-center mb-4 overflow-hidden">
+                <div key={p.id} className="group rounded-lg bg-card border border-border p-3 hover:border-primary/30 hover:shadow-[var(--card-shadow-hover)] transition-all duration-300 flex flex-col animate-fade-in">
+                  <div className="aspect-square rounded-md bg-muted flex items-center justify-center mb-2 overflow-hidden">
                     {p.image_url ? (
                       <img src={p.image_url} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     ) : (
-                      <ShoppingCart className="text-muted-foreground" size={40} />
+                      <ShoppingCart className="text-muted-foreground" size={28} />
                     )}
                   </div>
                   {p.category && (
-                    <span className="text-xs font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded-full self-start mb-2">{p.category}</span>
+                    <span className="text-[10px] font-semibold text-primary bg-primary/10 px-1.5 py-0.5 rounded-full self-start mb-1 line-clamp-1">{p.category}</span>
                   )}
-                  <h3 className="font-display font-semibold mb-1">{p.name}</h3>
-                  {p.description && <p className="text-xs text-muted-foreground mb-3 flex-1">{p.description}</p>}
-                  <div className="flex items-center justify-between">
-                    <span className="font-display font-bold text-primary">KSh {Number(p.price).toLocaleString()}</span>
-                    <Button size="sm" variant="outline" asChild>
+                  <h3 className="font-display font-semibold text-sm mb-1 line-clamp-2">{p.name}</h3>
+                  {p.description && <p className="text-[11px] text-muted-foreground mb-2 flex-1 line-clamp-2">{p.description}</p>}
+                  <div className="flex items-center justify-between gap-1 mt-auto">
+                    <span className="font-display font-bold text-primary text-sm">KSh {Number(p.price).toLocaleString()}</span>
+                    <Button size="sm" variant="outline" className="h-7 px-2 text-xs" asChild>
                       <a href={`https://wa.me/254727849984?text=I'm%20interested%20in%20${encodeURIComponent(p.name)}`} target="_blank" rel="noopener noreferrer">Inquire</a>
                     </Button>
                   </div>
                   {!p.in_stock && (
-                    <span className="text-xs text-destructive mt-2">Out of stock</span>
+                    <span className="text-[10px] text-destructive mt-1">Out of stock</span>
                   )}
                 </div>
               ))}
