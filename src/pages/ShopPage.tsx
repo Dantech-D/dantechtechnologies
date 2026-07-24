@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { ShoppingCart, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -82,7 +83,7 @@ const ShopPage = () => {
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
               {filtered.map((p) => (
-                <div key={p.id} className="group rounded-lg bg-card border border-border p-3 hover:border-primary/30 hover:shadow-[var(--card-shadow-hover)] transition-all duration-300 flex flex-col animate-fade-in">
+                <Link key={p.id} to={`/shop/${p.id}`} className="group rounded-lg bg-card border border-border p-3 hover:border-primary/30 hover:shadow-[var(--card-shadow-hover)] transition-all duration-300 flex flex-col animate-fade-in">
                   <div className="aspect-square rounded-md bg-muted flex items-center justify-center mb-2 overflow-hidden">
                     {p.image_url ? (
                       <img src={p.image_url} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -97,14 +98,12 @@ const ShopPage = () => {
                   {p.description && <p className="text-[11px] text-muted-foreground mb-2 flex-1 line-clamp-2">{p.description}</p>}
                   <div className="flex items-center justify-between gap-1 mt-auto">
                     <span className="font-display font-bold text-primary text-sm">KSh {Number(p.price).toLocaleString()}</span>
-                    <Button size="sm" variant="outline" className="h-7 px-2 text-xs" asChild>
-                      <a href={`https://wa.me/254727849984?text=I'm%20interested%20in%20${encodeURIComponent(p.name)}`} target="_blank" rel="noopener noreferrer">Inquire</a>
-                    </Button>
+                    <span className="text-[11px] font-semibold text-primary group-hover:underline">View →</span>
                   </div>
                   {!p.in_stock && (
                     <span className="text-[10px] text-destructive mt-1">Out of stock</span>
                   )}
-                </div>
+                </Link>
               ))}
             </div>
           )}
